@@ -1,0 +1,1 @@
+First get_input_sequene.ipynb was used to get the required input format and then sample.py was applied to the fasta sequences to obtain the score. 

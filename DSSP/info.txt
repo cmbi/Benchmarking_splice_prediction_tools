@@ -1,0 +1,1 @@
+First get_input_sequence.ipynb and get_input_sequence-DI.ipynb (for DI variants) are used to get the input sequences in the required format. Then AS_DSSP.py and DS_DSSP.py are used to calculated the scores for acceptor and donor sites respectively.
