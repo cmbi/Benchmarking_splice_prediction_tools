@@ -9,7 +9,7 @@ from Bio import SeqIO
 
 BASE_KEY = {'A': 0, 'C': 1, 'G': 2, 'T': 3, 'N': 4}
 
-dataset = 'ABCA4_DI'
+dataset = 'ABCA4_NCSS'
 
 
 def check_input(input_seq):
