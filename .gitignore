@@ -1,0 +1,16 @@
+*__pycache__/
+*.bed
+*.out
+*.fa
+*.fai
+*.DS_Store  
+*.xlsx
+*.png
+*.json
+*.hdf5
+*.txt
+*.png
+*.gtf
+*!variant_scores.xlsx
+*.vcf
+*.csv

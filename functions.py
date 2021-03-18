@@ -1,7 +1,7 @@
 import pandas as pd
 from numpy import nan
 import numpy as np
-
+from sklearn.metrics import roc_curve
 def delta_score(df, name, index):
     '''calulate the delta score 
     @param df: dataframe that contains the scores
@@ -81,9 +81,6 @@ def read_scores_from_excel(file, sheetname, fillna = True, diall = False):
 
         if 'NCSS' in sheetname or diall == True:
 
-            # add the S-SCAP score
-            element.append(np.absolute(di.at[index,'SCAP']))
-
             # add the absolute value of the SPIDEX score
             element.append(np.absolute(di.at[index,'Spidex']))
 
@@ -95,7 +92,6 @@ def read_scores_from_excel(file, sheetname, fillna = True, diall = False):
 
         # add the SSFL score 
         element.append(delta_score(di, 'SSFL', index))
-
 
         delta_scores[index] = element
 
@@ -118,3 +114,19 @@ def reverse_sequence(s):
         else:
             new_sequence = new_sequence + base
     return new_sequence[::-1]
+
+def Find_Optimal_Cutoff(target, predicted):
+    """ Find the optimal probability cutoff point for a classification model related to event rate
+    @target : Matrix with dependent or target data, where rows are observations
+    @predicted : Matrix with predicted data, where rows are observations
+    Returns list type, with optimal cutoff value
+    
+    adapted from: https://stackoverflow.com/questions/28719067/roc-curve-and-cut-off-point-python
+
+    """
+    fpr, tpr, threshold = roc_curve(target, predicted)
+    i = np.arange(len(tpr)) 
+    roc = pd.DataFrame({'tf' : pd.Series(tpr-(1-fpr), index=i), 'threshold' : pd.Series(threshold, index=i)})
+    roc_t = roc.iloc[(roc.tf-0).abs().argsort()[:1]]
+
+    return list(roc_t['threshold']) 
