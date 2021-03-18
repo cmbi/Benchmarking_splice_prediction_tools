@@ -37,10 +37,11 @@ The roc.py script creates the receiver operatur curve (ROC) curve for the datase
 ## Splice prediction tools
 
 #### Alamut 3/4, GeneSplicer, NNSPLICE, MaxEntScan and SpliceSiteFinder-like
+GeneSplicer, NNSPLICE, MaxEntScan and SpliceSiteFinder-like were accessed through Alamut Visual Software version 2.13. The Alamut 3/4 consensus approach is a consensus of the four mentioned Alamut tools.
 
-#### CADD
+#### [CADD](https://cadd.gs.washington.edu/score)
 
-#### DSSP
+#### [DSSP](https://github.com/DSSP-github/DSSP)
 DSSP required the following input sequences:
 - An input for acceptor site should be a 140-mer string with the AG at positions 69 and 70
 - An input for donor site should be a 140-mer string with the GT at positions 71 and 72
@@ -49,13 +50,13 @@ To reproduce the analysis, the following steps are required:
 1. The input sequence in the right format for DSSP can be obtained with `get_input_sequence.ipynb` or `get_input_sequence_di.ipynb` for deep intronic variants.
 2. `AS_DSSP.py` and `DS_DSSP.py` are used to calculated the scores for acceptor and donor sites, respectively.
 
-#### MMSplice and MTSplice
+#### [MMSplice and MTSplice](https://github.com/gagneurlab/MMSplice_MTSplice)
 
-#### Spidex
+#### [Spidex](http://tools.genes.toronto.edu/)
 
-#### SpliceAI
+#### [SpliceAI](https://github.com/Illumina/SpliceAI)
 
-#### SpliceRover
+#### [SpliceRover](http://bioit2.irc.ugent.be/rover/splicerover)
 
 
 
