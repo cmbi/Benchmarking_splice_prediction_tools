@@ -8,7 +8,7 @@ variants = 'ABCA4_NCSS'
 
 #read in the data
 column_names = ['RNA','CADD','DSSP','GeneSplicer', 'MaxEntScan', 'MMSplice', 'MTSplice', 'NNSPLICE', 'SPIDEX', 'SpliceAI', 'SpliceRover', 'SpliceSiteFinder-like']
-df = read_scores_from_excel('variants_scores.xlsx', variants)
+df = read_scores_from_excel('variant_scores.xlsx', variants)
 df.columns = column_names
 
 #set the threshold for the values that are considered to affect splicing. Everything above the threshold is defined to affect splicing.
