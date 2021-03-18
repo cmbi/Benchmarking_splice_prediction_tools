@@ -44,6 +44,7 @@ The roc.py script creates the receiver operatur curve (ROC) curve for the datase
 DSSP required the following input sequences:
 - An input for acceptor site should be a 140-mer string with the AG at positions 69 and 70
 - An input for donor site should be a 140-mer string with the GT at positions 71 and 72
+
 To reproduce the analysis, the following steps are required:
 1. The input sequence in the right format for DSSP can be obtained with `get_input_sequence.ipynb` or `get_input_sequence_di.ipynb` for deep intronic variants.
 2. `AS_DSSP.py` and `DS_DSSP.py` are used to calculated the scores for acceptor and donor sites, respectively.
