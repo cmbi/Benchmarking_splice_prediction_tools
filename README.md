@@ -47,8 +47,11 @@ DSSP required the following input sequences:
 - An input for donor site should be a 140-mer string with the GT at positions 71 and 72
 
 To reproduce the analysis, the following steps are required:
-1. The input sequence in the right format for DSSP can be obtained with `get_input_sequence.ipynb` or `get_input_sequence_di.ipynb` for deep intronic variants.
-2. `AS_DSSP.py` and `DS_DSSP.py` are used to calculated the scores for acceptor and donor sites, respectively.
+1. Generation of the input sequences for DSSP: Separate scripts for NCSS variants (`DSSP_NCSS_input.py`) and DI variants (`DSSP_DI_input.py`) are available. Both scripts produce two separate output files, one for variants located at the SDS and one for variants located at the SAS. For ABCA4 NCSS variants those files are called `ABCA4_NCSS_acceptor.fa.out` and `ABCA4_NCSS_donor.fa.out`.
+2. Calulation of the DSSP scores: `AS_DSSP.py` and `DS_DSSP.py` are used to calculated the scores for acceptor and donor sites, respectively. DSSP can be called form the command line with the following command:
+
+`$ python DS_DSSP.py -I input.fasta -O output.txt`
+
 
 #### [MMSplice and MTSplice](https://github.com/gagneurlab/MMSplice_MTSplice)
 
