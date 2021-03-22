@@ -13,7 +13,7 @@ gene = 'ABCA4'
 length = 140
 
 # define variables
-excel_file = '../variant_scores.xlsx'
+excel_file = '../data/variant_scores.xlsx'
 genome = 'GRCh37'
 chromosome = 1
 dataset = gene + '_DI'

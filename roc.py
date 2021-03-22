@@ -18,7 +18,7 @@ else:
      column_names = ['RNA','CADD','DSSP','GeneSplicer', 'MaxEntScan', 'NNSPLICE', 'SpliceAI', 'SpliceRover', 'SpliceSiteFinder-like']
 
 # Import the scores, calculate delta scores and store them in a dataframe
-delta_df = read_scores_from_excel('variant_scores.xlsx', variants)
+delta_df = read_scores_from_excel('data/variant_scores.xlsx', variants)
 delta_df.columns = column_names
 
 names = column_names[1:]

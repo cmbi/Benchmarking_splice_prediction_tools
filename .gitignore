@@ -12,7 +12,5 @@
 *.png
 *.gtf
 *!variant_scores.xlsx
-*.vcf
 *.csv
-references/
-figures/
+*.vcf

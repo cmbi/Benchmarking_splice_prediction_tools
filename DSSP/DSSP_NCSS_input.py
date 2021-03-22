@@ -14,7 +14,7 @@ gene = 'ABCA4'
 
 variant = 'NCSS'
 length = 140
-excel_file = '../variant_scores.xlsx'
+excel_file = '../data/variant_scores.xlsx'
 dataset = gene + '_NCSS'
 reverse = True
 
