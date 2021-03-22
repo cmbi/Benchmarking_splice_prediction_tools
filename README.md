@@ -42,6 +42,11 @@ GeneSplicer, NNSPLICE, MaxEntScan and SpliceSiteFinder-like were accessed throug
 #### [CADD](https://cadd.gs.washington.edu/score)
 
 #### [DSSP](https://github.com/DSSP-github/DSSP)
+
+reference fasta sequences can be downloaded from the following links and can be stored in the `references` folder.
+- [ABCA4](http://ftp.ensembl.org/pub/release-75/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.75.dna.chromosome.1.fa.gz)
+- [MYBPC3](https://www.ncbi.nlm.nih.gov/nuccore/NC_000011.9?report=fasta)
+
 DSSP required the following input sequences:
 - An input for acceptor site should be a 140-mer string with the AG at positions 69 and 70
 - An input for donor site should be a 140-mer string with the GT at positions 71 and 72
