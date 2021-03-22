@@ -5,6 +5,6 @@
 3. Create the variant vcf file with `create_vcffile.py'
 4. Run SpliceAI in the command line (example for ABCA4 NCSS variants): 
 
-   `spliceai -I ABCA4_NCSS_variants.vcf -O ABCA4_NCSS_output.vcf -R ../reference/hg19.fa -A grch37 -D 500`
+   `spliceai -I data/ABCA4_NCSS_variants.vcf -O SpliceAI/ABCA4_NCSS_output.vcf -R reference/hg19.fa -A grch37 -D 500`
 5. Run `vcf_to_excel.py` to write the SpliceAI scores to an excel file
 
