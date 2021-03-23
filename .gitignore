@@ -5,7 +5,7 @@
 *.fai
 *.DS_Store  
 *.xlsx
-!data variant_scores.xlsx
+!data/*.xlsx
 *.png
 *.json
 *.hdf5
