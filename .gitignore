@@ -5,12 +5,12 @@
 *.fai
 *.DS_Store  
 *.xlsx
+!data variant_scores.xlsx
 *.png
 *.json
 *.hdf5
 *.txt
 *.png
 *.gtf
-*!data variant_scores.xlsx
 *.csv
 *.vcf
