@@ -11,6 +11,6 @@
 *.txt
 *.png
 *.gtf
-*!variant_scores.xlsx
+*!data/variant_scores.xlsx
 *.csv
 *.vcf
