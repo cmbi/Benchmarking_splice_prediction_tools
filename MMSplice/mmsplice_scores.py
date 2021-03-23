@@ -49,4 +49,7 @@ dl = SplicingVCFDataloader(new_gtf , fasta, vcf, tissue_specific = tissue_specif
 model = MMSplice()
 
 # predict and save to csv file
-predict_save(model, dl, ('mtsplice_' + gene + '_' + variants + '.csv'), pathogenicity=True, splicing_efficiency=True)
+if tissue_specificity = False:
+    predict_save(model, dl, ('mmsplice_' + gene + '_' + variants + '.csv'), pathogenicity=True, splicing_efficiency=True)
+else:
+    predict_save(model, dl, ('mtsplice_' + gene + '_' + variants + '.csv'), pathogenicity=True, splicing_efficiency=True)
