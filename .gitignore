@@ -7,10 +7,9 @@
 *.xlsx
 !data/*.xlsx
 *.png
-*.json
-*.hdf5
 *.txt
 *.png
 *.gtf
 *.csv
 *.vcf
+*.idx

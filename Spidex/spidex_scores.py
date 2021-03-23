@@ -7,7 +7,7 @@ gene = 'ABCA4'
 variants = 'NCSS'
 
 if gene == 'ABCA4':
-    chromsome = 1
+    chromosome = 1
 elif gene == 'MYBPC3':
     chromosome = 11
 
@@ -58,7 +58,5 @@ for index, row in data.iterrows():
     except:
         score = 'n.a.'
     data.at[index,'score'] = score
-    
-print(data)
 
 data.to_excel(('spidex_' + gene + '_' + variants + '.xlsx'))
