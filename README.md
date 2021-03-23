@@ -2,7 +2,7 @@
 
 This repository contains the scripts used for the analysis of the manuscript **"Benchmarking deep learning splice prediction tools using functional splice assays"**.
 
-All variants and splice prediction scores used for the analysis are included in `variant_scores.xlsx`. The datasets are:
+All variants and splice prediction scores used for the analysis are included in `data/variant_scores.xlsx`. The datasets are:
 - ABCA4 NCSS (non-canonical splice site) variants
 - ABCA4 DI (deep intronic) variants
 - MYBPC3 NCSS variants
