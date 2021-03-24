@@ -5,6 +5,6 @@
    *  [Human genome annotation](http://ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gtf.gz)
    *  [Reference fasta sequence chromosome 1](http://ftp.ensembl.org/pub/release-75/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.75.dna.chromosome.1.fa.gz)
    *  [Reference fasta sequence chromosome 11](https://www.ncbi.nlm.nih.gov/nuccore/NC_000011.9?report=fasta)
-3. Create the variant vcf file with `create_vcffile.py'
-4. Run `mmsplice_scores.py` on the dataset. The parameter tissue_specificity determines if MMSplice or MTSplice is used.
+3. Create the variant vcf file with `create_vcffile.py` 
+4. Run `mmsplice_scores.py` on the dataset. The parameter ` tissue_specificity`  determines if MMSplice or MTSplice is used.
 5. The scores are stored in a csv file called `mmsplice_ABCA4_NCSS.csv` for ABCA4 NCSS variants and tissue_specificity = False.
