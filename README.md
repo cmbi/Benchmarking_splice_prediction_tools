@@ -21,7 +21,7 @@ This script provides information about the variants in the dataset:
 - number of variants located close to the acceptor donor site (SAS)
     - number of splice altering variants at the SAS
     - number of non splice altering variant at the SAS
-- Number of splice altering an non splice altering variants at each position in the non-canonical splice site
+- Number of splice altering and non splice altering variants at each position in the non-canonical splice site
 
 #### `confusion_matrix.py`
 This scripts calculates, for each splice prediction tool used in the analysis, the optimal threshold and corresponding confusion matrix. The format of the confusion matrix in python is:
