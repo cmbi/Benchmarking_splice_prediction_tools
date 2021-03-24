@@ -39,10 +39,10 @@ The roc.py script creates the receiver operatur curve (ROC) curve for the datase
 * Alamut 3/4 consensus (consensus of GeneSplicer, MaxEntScan, NNSPLICE and SpliceSiteFinder-like)
 * [CADD](https://cadd.gs.washington.edu/score)
 * [DSSP](https://github.com/DSSP-github/DSSP)
-* GeneSplicer
-* MaxEntScan
+* [GeneSplicer](https://ccb.jhu.edu/software/genesplicer/)
+* [MaxEntScan](http://hollywood.mit.edu/burgelab/maxent/Xmaxentscan_scoreseq.html)
 * [MMSplice and MTSplice](https://github.com/gagneurlab/MMSplice_MTSplice)
-* NNSPLICE
+* [NNSPLICE](https://www.fruitfly.org/seq_tools/splice.html)
 * [Spidex](http://tools.genes.toronto.edu/)
 * [SpliceAI](https://github.com/Illumina/SpliceAI)
 * [SpliceRover](http://bioit2.irc.ugent.be/rover/splicerover)
