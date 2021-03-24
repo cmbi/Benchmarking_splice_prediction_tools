@@ -2,7 +2,7 @@
 
 1. Install MMSplice and all necessary packages (information on MMSplice github page)
 2. Download the necessary reference genome sequences and genome annotation files"
-   *  [Human gene annotation](http://ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gtf.gz)
+   *  [Human genome annotation](http://ftp.ensembl.org/pub/release-75/gtf/homo_sapiens/Homo_sapiens.GRCh37.75.gtf.gz)
    *  [Reference fasta sequence chromosome 1](http://ftp.ensembl.org/pub/release-75/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.75.dna.chromosome.1.fa.gz)
    *  [Reference fasta sequence chromosome 11](https://www.ncbi.nlm.nih.gov/nuccore/NC_000011.9?report=fasta)
 3. Create the variant vcf file with `create_vcffile.py'
