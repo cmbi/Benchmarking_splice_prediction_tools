@@ -33,6 +33,13 @@ This scripts calculates, for each splice prediction tool used in the analysis, t
 #### `create_vcffile.py`
 This script is used to convert the variants into vcf format. This is required for CADD, MMSplice and SpliceAI. The script makes use of the pyhgvs package nad it required a [reference genome file](http://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/) and [RefSeq transcripts](https://github.com/counsyl/hgvs/blob/master/pyhgvs/data/genes.refGene).
 
+#### `functions.py`
+This file containes functions that are used in other scripts. These include:
+* `delta_score`: A function to calculate the delta score
+* `read_scores_from_excel`: A function to read the variants and scores from an excel sheet 
+* `reverse_sequence`: Convertes a sequence int the sequence of the complementary strand
+* `Find_Optimal_Cutoff`: Find the optimal probability cutoff point for a classification model related to event rate
+
 #### `roc.py`
 The roc.py script creates the receiver operatur curve (ROC) curve for the dataset. Additionally, it also prints the area under the curve (AUC) for each tool. 
 
