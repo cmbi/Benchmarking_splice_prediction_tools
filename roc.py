@@ -9,7 +9,7 @@ import matplotlib.font_manager as font_manager
 from functions import read_scores_from_excel
 
 # define the variants that should be analyzed (ABCA4_NCSS, ABCA4_DI or MYBPC3_NCSS)
-variants = 'ABCA4_DI'
+variants = 'ABCA4_NCSS'
 
 # Define the column headers that are used in the dataframe. For DI variants MMSplice, MTSPlice and SPIDEX are excluded.
 if 'NCSS' in variants:
