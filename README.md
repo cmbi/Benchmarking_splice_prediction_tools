@@ -21,7 +21,7 @@ This script provides information about the variants in the dataset:
 - number of variants located close to the acceptor donor site (SAS)
     - number of splice altering variants at the SAS
     - number of non splice altering variant at the SAS
-- Number of splice altering an non splice altering variants at each position in the non-canonical splice site
+- Number of splice altering and non splice altering variants at each position in the non-canonical splice site
 
 #### `confusion_matrix.py`
 This scripts calculates, for each splice prediction tool used in the analysis, the optimal threshold and corresponding confusion matrix. The format of the confusion matrix in python is:
@@ -39,10 +39,10 @@ The roc.py script creates the receiver operatur curve (ROC) curve for the datase
 * Alamut 3/4 consensus (consensus of GeneSplicer, MaxEntScan, NNSPLICE and SpliceSiteFinder-like)
 * [CADD](https://cadd.gs.washington.edu/score)
 * [DSSP](https://github.com/DSSP-github/DSSP)
-* GeneSplicer
-* MaxEntScan
+* [GeneSplicer](https://ccb.jhu.edu/software/genesplicer/)
+* [MaxEntScan](http://hollywood.mit.edu/burgelab/maxent/Xmaxentscan_scoreseq.html)
 * [MMSplice and MTSplice](https://github.com/gagneurlab/MMSplice_MTSplice)
-* NNSPLICE
+* [NNSPLICE](https://www.fruitfly.org/seq_tools/splice.html)
 * [Spidex](http://tools.genes.toronto.edu/)
 * [SpliceAI](https://github.com/Illumina/SpliceAI)
 * [SpliceRover](http://bioit2.irc.ugent.be/rover/splicerover)

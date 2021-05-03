@@ -9,6 +9,8 @@ from Bio import SeqIO
 
 BASE_KEY = {'A': 0, 'C': 1, 'G': 2, 'T': 3, 'N': 4}
 
+# Define the variants that should be analyzed.
+# Option are (ABCA4_NCSS, ABCA4_DI and MYBPC3_NCSS)
 dataset = 'ABCA4_NCSS'
 
 
@@ -46,7 +48,7 @@ def DS_DSSP(input_seq):
 
     return predict
 
-
+# This part is modified so that it can predict a score for both the wild type and variant sequence and write both to the same output file
 def main():
     fasta_sequences = SeqIO.parse(open((dataset + '_donor.fa.out')),'fasta')
     
