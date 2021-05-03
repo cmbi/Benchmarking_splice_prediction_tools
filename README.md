@@ -30,9 +30,14 @@ This scripts calculates, for each splice prediction tool used in the analysis, t
 |-|-|
 | **FN** | **TP** |
 
+#### `create_vcffile.py`
+This script is used to convert the variants into vcf format. This is required for CADD, MMSplice and SpliceAI. The script makes use of the pyhgvs package nad it required a [reference genome file](http://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/) and [RefSeq transcripts](https://github.com/counsyl/hgvs/blob/master/pyhgvs/data/genes.refGene).
+
 #### `roc.py`
 The roc.py script creates the receiver operatur curve (ROC) curve for the dataset. Additionally, it also prints the area under the curve (AUC) for each tool. 
 
+#### `roc_best5tools.py`
+This scripts plots the ROC curve for the 5 best tools for the dataset including the AUC. 
 
 ## Splice prediction tools
 
@@ -41,7 +46,7 @@ The roc.py script creates the receiver operatur curve (ROC) curve for the datase
 * [DSSP](https://github.com/DSSP-github/DSSP)
 * [GeneSplicer](https://ccb.jhu.edu/software/genesplicer/)
 * [MaxEntScan](http://hollywood.mit.edu/burgelab/maxent/Xmaxentscan_scoreseq.html)
-* [MMSplice and MTSplice](https://github.com/gagneurlab/MMSplice_MTSplice)
+* [MMSplice](https://github.com/gagneurlab/MMSplice_MTSplice)
 * [NNSPLICE](https://www.fruitfly.org/seq_tools/splice.html)
 * [Spidex](http://tools.genes.toronto.edu/)
 * [SpliceAI](https://github.com/Illumina/SpliceAI)
