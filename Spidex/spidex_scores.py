@@ -4,7 +4,7 @@ from cyvcf2 import VCF
 
 #define variables
 gene = 'ABCA4'
-variants = 'NCSS'
+variants = 'DI'
 
 if gene == 'ABCA4':
     chromosome = 1
@@ -59,4 +59,4 @@ for index, row in data.iterrows():
         score = 'n.a.'
     data.at[index,'score'] = score
 
-data.to_excel(('spidex_' + gene + '_' + variants + '.xlsx'))
+data.to_csv(('spidex_' + gene + '_' + variants + '.csv'))

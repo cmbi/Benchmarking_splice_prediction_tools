@@ -4,10 +4,14 @@ from functions import Find_Optimal_Cutoff, read_scores_from_excel
 from sklearn.metrics import confusion_matrix
 
 #define the variants that should be analyzed (ABCA4_NCSS, ABCA4_DI or MYBPC3_NCSS)
-variants = 'ABCA4_NCSS'
+variants = 'MYBPC3_NCSS'
 
 #read in the data
-column_names = ['RNA','CADD','DSSP','GeneSplicer', 'MaxEntScan', 'MMSplice', 'MTSplice', 'NNSPLICE', 'SPIDEX', 'SpliceAI', 'SpliceRover', 'SpliceSiteFinder-like']
+# Define the column headers that are used in the dataframe. For DI variants MMSplice, MTSPlice and SPIDEX are excluded.
+if 'NCSS' in variants:
+    column_names = ['RNA','CADD','DSSP','GeneSplicer', 'MaxEntScan', 'MMSplice', 'NNSPLICE', 'SPIDEX', 'SpliceAI', 'SpliceRover', 'SpliceSiteFinder-like']
+else:
+     column_names = ['RNA','CADD','DSSP','GeneSplicer', 'MaxEntScan', 'NNSPLICE', 'SpliceAI', 'SpliceRover', 'SpliceSiteFinder-like']
 df = read_scores_from_excel('data/variant_scores.xlsx', variants)
 df.columns = column_names
 
@@ -15,7 +19,7 @@ df.columns = column_names
 threshold = []
 for name in column_names[1:]:
     threshold.append(Find_Optimal_Cutoff(df['RNA'], df[name])[0])
-print('thresholds: ', threshold)
+    print(name, Find_Optimal_Cutoff(df['RNA'], df[name])[0])
 
 # create a new dataframe to store the classification and add the classification of the different tools to the dataframe
 classification = pd.DataFrame(df['RNA']) 
@@ -42,3 +46,5 @@ cm.append(['Alamut 3/4 consensus', cm_consensus[1,1], cm_consensus[0,1], cm_cons
 
 statistics = pd.DataFrame.from_records(cm)
 statistics.to_csv(variants + '_cm.csv', index=False, header=['Splice prediction tool', 'TP', 'FP', 'TN', 'FN', 'threshold'])
+
+print(df['DSSP'])

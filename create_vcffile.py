@@ -1,11 +1,12 @@
 #imports 
 import pandas as pd
 from datetime import date
-import hgvs
-from hgvs.easy import *
+import pyhgvs as hgvs
+from pyfaidx import Fasta
+from pyhgvs.utils import read_transcripts
 
 # Define variables
-genename = 'ABCA4'
+genename = 'MYBPC3'
 variants = 'NCSS'
 
 path = 'data/variant_scores.xlsx'
@@ -16,66 +17,31 @@ elif genename == 'MYBPC3':
     gene = 'NM_000256.3'
     chromosome = 11
 
-genome = 'GRCh37'
-
-
 #Load the data
 df = pd.read_excel(io=path, sheet_name=genename + '_' + variants, engine='openpyxl')
-variant = []
+data = []
 for name in df['cDNA variant']:
-    variant.append(name)
+    data.append(name)
 
-# Convert the cDNA location to genomic location
-# create a dictionary to store the values for the vcf file
-values = dict()
+#read the genome
+genome = Fasta('references/hg19.fa')
 
-# get the values for all the variants
-for name in variant:
-    
-    #create an empty dictionary to store the values
-    values[name] = {}
-    
-    # create a hgvs parser to convert cDNA location to genomic location
-    #if the variant is a deletion, we also want to write the previous base to the vcf file
-    if 'del' in name:
-        hp = hgvs.parser.Parser()
-        hgvs_var = hp.parse_hgvs_variant(gene + ':' + name)
-        hgvs_var.posedit.pos.start.base = hgvs_var.posedit.pos.start.base -1
-    
-    else:  
-        hp = hgvs.parser.Parser()
-        hgvs_var = hp.parse_hgvs_variant(gene + ':' + name)
+# Read RefSeq transcripts into a python dict.
+with open('references/genes.refGene') as infile:
+    transcripts = read_transcripts(infile)
 
-    hdp = hgvs.dataproviders.uta.connect()
+# Provide a callback for fetching a transcript by its name.
+def get_transcript(name):
+    return transcripts.get(name)
 
-    am = hgvs.assemblymapper.AssemblyMapper(hdp, assembly_name=genome)
-    var_t = am.c_to_g(hgvs_var)
-
-    # get the chromosome
-    chromosome = int((var_t.ac).split('.')[0][-2:])
-    
-    # replace 23 with X and 24 with Y 
-    if chromosome == '23':
-        chromosome = 'X'
-    elif chromosome == '24':
-        chromosome = 'Y'
-        
-    values[name]['CHROM'] = chromosome
-    
-    # get the position
-    values[name]['POS'] = var_t.posedit.pos.start.base
-    
-    # get the reference base
-    values[name]['REF'] = var_t.posedit.edit.ref
-        
-    # get the alternative base
-    values[name]['ALT'] = var_t.posedit.edit.alt
-    
-# Convert to Dataframe
-vcf_data = pd.DataFrame.from_dict(values, orient='index')
+# Store the variant informatio in a list
+vcf = []
+for v in data:
+    chrom, offset, ref, alt = hgvs.parse_hgvs_name(gene + ':' + v, genome, get_transcript=get_transcript)
+    vcf.append([chrom, offset, ref, alt])
 
 # Define reference genome
-genome = ['reference=GRCh37/hg19', 'contig=<ID=1,length=249250621>', 'contig=<ID=2,length=243199373>',
+ref_genome = ['reference=GRCh37/hg19', 'contig=<ID=1,length=249250621>', 'contig=<ID=2,length=243199373>',
             'contig=<ID=3,length=198022430>', 'contig=<ID=4,length=191154276>', 'contig=<ID=5,length=180915260>',
             'contig=<ID=6,length=171115067>', 'contig=<ID=7,length=159138663>', 'contig=<ID=8,length=146364022>',
             'contig=<ID=9,length=141213431>', 'contig=<ID=10,length=135534747>','contig=<ID=11,length=135006516>',
@@ -93,20 +59,17 @@ with open(('data/' + genename + '_' + variants + '_variants.vcf'),'w') as file:
     
     file.write('##fileDate=' + str(today) + '\n')
     
-    for element in genome:
+    for element in ref_genome:
         file.write('##' + element + '\n')
     
     file.write('#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\n')
     
-    for i in range(len(vcf_data)):
-        file.write(str(vcf_data.iloc[i]['CHROM']) + '\t')
-        file.write(str(vcf_data.iloc[i]['POS']) + '\t')
+    for i in range(len(vcf)):
+        file.write(str(chromosome) + '\t')
+        file.write(str(vcf[i][1]) + '\t')
         file.write('.' + '\t')
-        file.write(str(vcf_data.iloc[i]['REF']) + '\t')
-        if vcf_data.iloc[i]['ALT'] == None:
-            file.write(str(vcf_data.iloc[i]['REF'][0]) + '\t')
-        else:
-            file.write(str(vcf_data.iloc[i]['ALT']) + '\t')
+        file.write(str(vcf[i][2]) + '\t')
+        file.write(str(vcf[i][3]) + '\t')
         file.write('.' + '\t')
         file.write('.' + '\t')
         file.write('.' + '\n')

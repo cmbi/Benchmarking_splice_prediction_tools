@@ -7,9 +7,9 @@ from gtfparse import read_gtf
 import pandas as pd
 
 # Define variables
-variants = 'NCSS'
+variants = 'DI'
 gene = 'ABCA4'
-# set tissue_specificity = False for MMSplice and tissue_specific = True for MTSplice
+# set tissue_specific = False for MMSplice and tissue_specific = True for MTSplice
 tissue_specificity = False
 
 # Get necessary files
@@ -43,13 +43,13 @@ result.to_csv(new_gtf , sep='\t', index=False, header=None)
 # predict the scores
 # dataloader to load variants from vcf
 # set tissue_specific = False for MMSplice and tissue_specific = True for MTSplice
-dl = SplicingVCFDataloader(new_gtf , fasta, vcf, tissue_specific = tissue_specificity)
+dl = SplicingVCFDataloader(new_gtf, fasta, vcf, tissue_specific = tissue_specificity) 
 
 # Specify model
 model = MMSplice()
 
-# predict and save to csv file
-if tissue_specificity = False:
-    predict_save(model, dl, ('mmsplice_' + gene + '_' + variants + '.csv'), pathogenicity=True, splicing_efficiency=True)
-else:
-    predict_save(model, dl, ('mtsplice_' + gene + '_' + variants + '.csv'), pathogenicity=True, splicing_efficiency=True)
+# predict  the scores
+predictions = predict_all_table(model, dl, pathogenicity=True, splicing_efficiency=True)
+# Summarize the effect as the maximum across all exons
+predictions = max_varEff(predictions)
+predictions.to_csv('mmsplice_' + gene + '_' + variants + '.csv')

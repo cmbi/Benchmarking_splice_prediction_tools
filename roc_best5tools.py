@@ -9,7 +9,7 @@ import matplotlib.font_manager as font_manager
 from functions import read_scores_from_excel
 
 # define the variants that should be analyzed (ABCA4_NCSS, ABCA4_DI or MYBPC3_NCSS)
-variants = 'ABCA4_DI'
+variants = 'MYBPC3_NCSS'
 
 # Define the column headers that are used in the dataframe. For DI variants MMSplice, MTSPlice and SPIDEX are excluded.
 if 'NCSS' in variants:
@@ -65,24 +65,33 @@ colors = {'Alamut 3/4': '#20E2E7', 'CADD' : '#0B3954', 'DSSP' : '#63B0CD',
 
 # create a dictionary to store the AUC values
 aucs = {}
+ftrates = {}
 
-# Plot the ROC curve
-plt.figure(figsize=(10,10))
+# Get the 5 highest auc values
 for i in range(len(probabilities)):
     prob = probabilities[i]
     fper, tper, thresholds = roc_curve(label, prob, pos_label=1) 
     auc = metrics.roc_auc_score(label, prob)
     aucs[names[i]] = auc
-    plt.plot(fper, tper, color=colors[names[i]], label=names[i]) # + ': ' + "{0:0.2f}".format(auc))
+    ftrates[names[i]] = [fper, tper]
+    
+sorted_aucs = sorted((value, key) for (key,value) in aucs.items())
+l = len(sorted_aucs)
+tools = [i[1] for i in sorted_aucs[l-5:l]]
+print(tools)
+
+# Plot the ROC curve
+plt.figure(figsize=(10,10))
+for t in tools:
+    plt.plot(ftrates[t][0], ftrates[t][1], color=colors[t], label=t + ': ' + "{0:0.2f}".format(aucs[t]), linewidth=1)
 
 font_prop = font_manager.FontProperties(size=18)
     
-plt.plot([0, 1], [0, 1], color='darkblue', linestyle='--')
+plt.plot([0, 1], [0, 1], color='#CED4DA', linestyle='--')
 plt.xlabel('False Positive Rate', size=18)
 plt.ylabel('True Positive Rate', size = 18)
 plt.title(('ROC Curve ' + variants + ' variants'), size = 20)
 plt.tick_params(labelsize=18)
 plt.legend(prop=font_prop)
-plt.savefig(('figures/ROC_' + variants + '.svg'),format='svg', dpi=1200)
+plt.savefig(('figures/ROC_5_' + variants + '.svg'),format='svg', dpi=1200)
 plt.show()
-print('auc values: ', aucs)

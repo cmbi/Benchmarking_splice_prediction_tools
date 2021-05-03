@@ -22,13 +22,13 @@ def delta_score(df, name, index):
     if df.at[index,wt] == 0:
         score = float(df.at[index,var])/delta[name]
     else: 
-        score = (float(df.at[index,var])-float(df.at[index,wt]))/float(df.at[index,wt])
+        score = (float(df.at[index,wt])-float(df.at[index,var]))/delta[name]
     return np.absolute(score)
 
-def read_scores_from_excel(file, sheetname, fillna = True, diall = False):
+def read_scores_from_excel(f, sheetname, fillna = True, diall = False):
     ''' This function takes an excel sheet with splice prediction scores, fills missing values with 0, 
     and calculates delta scores if necessary. It stores the resulting primary scores in a dataframe.
-    @param file: name of the excel file
+    @param f: name of the excel file
     @param sheetname: name of the sheet with the splice prediction scores
     @param fillna: If set to True, missing values are replaced with 0.
     @param diall: If set to True, it includes all tools for DI variants, even the ones that cannot predict scores
@@ -36,7 +36,7 @@ def read_scores_from_excel(file, sheetname, fillna = True, diall = False):
     '''
     
     # store the scores in a dataframe
-    di = pd.read_excel(file, sheetname)
+    di = pd.read_excel(f, sheetname, engine='openpyxl')
 
     # replace missing values with 0
     if fillna == True:
@@ -72,9 +72,6 @@ def read_scores_from_excel(file, sheetname, fillna = True, diall = False):
 
             # add the absolute value of the MMsplice score 
             element.append(np.absolute(di.at[index,'MMSplice']))
-
-            # add the absolute value of the MMsplice score
-            element.append(np.absolute(di.at[index,'MTSplice']))
 
         # add the NNSPLICE score 
         element.append(delta_score(di, 'NNS', index))

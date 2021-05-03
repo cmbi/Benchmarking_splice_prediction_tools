@@ -9,7 +9,7 @@ from functions import read_scores_from_excel
 variants = 'ABCA4_NCSS'
 
 # calculate the missing scores for each tool
-df = pd.read_excel('data/variant_scores.xlsx', variants, fillna=False, diall=True)
+df = pd.read_excel('data/variant_scores.xlsx', variants, engine='openpyxl')
 df.isnull().sum()
 
 # replace missing values with 0

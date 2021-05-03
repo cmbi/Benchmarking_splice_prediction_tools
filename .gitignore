@@ -6,10 +6,15 @@
 *.DS_Store  
 *.xlsx
 !data/*.xlsx
+variant_scores_old.xlsx
 *.png
 *.txt
 *.png
 *.gtf
 *.csv
-*.vcf
 *.idx
+*.svg
+figures/
+references/
+SpliceAI/*.vcf
+
