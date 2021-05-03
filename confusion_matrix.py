@@ -46,5 +46,3 @@ cm.append(['Alamut 3/4 consensus', cm_consensus[1,1], cm_consensus[0,1], cm_cons
 
 statistics = pd.DataFrame.from_records(cm)
 statistics.to_csv(variants + '_cm.csv', index=False, header=['Splice prediction tool', 'TP', 'FP', 'TN', 'FN', 'threshold'])
-
-print(df['DSSP'])

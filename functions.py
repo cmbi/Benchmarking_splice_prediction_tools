@@ -19,10 +19,7 @@ def delta_score(df, name, index):
     
     wt = name + '_wt'
     var = name + '_var'
-    if df.at[index,wt] == 0:
-        score = float(df.at[index,var])/delta[name]
-    else: 
-        score = (float(df.at[index,wt])-float(df.at[index,var]))/delta[name]
+    score = (float(df.at[index,wt])-float(df.at[index,var]))/delta[name]
     return np.absolute(score)
 
 def read_scores_from_excel(f, sheetname, fillna = True, diall = False):

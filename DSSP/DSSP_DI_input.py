@@ -123,9 +123,6 @@ with open ((dataset + '_donor.fa.out'), 'w') as file:
                 assert s[70:72] in ['GT','GC']
 
             # write the result to a file
-            if reverse == True:
-                s = reverse_sequence(s)
-                
             if df['affects'][i] == 'acceptor':
                 file2.write('>' + df['cDNA variant'][i] + '\n' + wt_sequence + '\n') 
                 file2.write('>' + df['cDNA variant'][i] + '_var\n' + s + '\n') 

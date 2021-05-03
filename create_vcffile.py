@@ -6,7 +6,7 @@ from pyfaidx import Fasta
 from pyhgvs.utils import read_transcripts
 
 # Define variables
-genename = 'MYBPC3'
+genename = 'ABCA4'
 variants = 'NCSS'
 
 path = 'data/variant_scores.xlsx'
@@ -23,10 +23,12 @@ data = []
 for name in df['cDNA variant']:
     data.append(name)
 
-#read the genome
+#read the genome 
+# the reference genome can be downloaded from: http://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/
 genome = Fasta('references/hg19.fa')
 
 # Read RefSeq transcripts into a python dict.
+# The RefSeq transcripts can be downloaded from: https://github.com/counsyl/hgvs/blob/master/pyhgvs/data/genes.refGene
 with open('references/genes.refGene') as infile:
     transcripts = read_transcripts(infile)
 
@@ -34,7 +36,7 @@ with open('references/genes.refGene') as infile:
 def get_transcript(name):
     return transcripts.get(name)
 
-# Store the variant informatio in a list
+# Store the variant information in a list
 vcf = []
 for v in data:
     chrom, offset, ref, alt = hgvs.parse_hgvs_name(gene + ':' + v, genome, get_transcript=get_transcript)
