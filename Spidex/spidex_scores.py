@@ -4,7 +4,7 @@ from cyvcf2 import VCF
 
 #define variables
 gene = 'ABCA4'
-variants = 'DI'
+variants = 'NCSS'
 
 if gene == 'ABCA4':
     chromosome = 1
